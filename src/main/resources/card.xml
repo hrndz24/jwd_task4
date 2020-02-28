@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<oldCards xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.buyash.com/students cards.xsd"
+          xmlns="http://www.buyash.com/students">
+    <card>
+        <theme>Religion</theme>
+        <type>promotional</type>
+        <wasSent>true</wasSent>
+        <country>Russia</country>
+        <value>thematic</value>
+    </card>
+</oldCards>

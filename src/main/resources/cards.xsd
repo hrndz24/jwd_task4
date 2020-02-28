@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.buyash.com/students"
+        xmlns:tns="http://www.buyash.com/students"
+        elementFormDefault="qualified">
+    <element name="oldCards">
+        <complexType>
+            <sequence>
+                <element name="card"
+                         type="tns:card"
+                         minOccurs="1"
+                         maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="card">
+        <sequence>
+            <element name="theme" type="string"/>
+            <element name="type" type="string">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="congratulatory"/>
+                        <enumeration value="promotional"/>
+                        <enumeration value="casual"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="wasSent" type="boolean"/>
+            <element name="country" type="string"/>
+            <element name="author" type="string" minOccurs="0"/>
+            <element name="value" type="string">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="historical"/>
+                        <enumeration value="collectible"/>
+                        <enumeration value="thematic"/>
+                    </restriction>
+                </simpleType>
+            </element>
+        </sequence>
+    </complexType>
+</schema>
