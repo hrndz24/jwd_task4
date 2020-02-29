@@ -1,4 +1,4 @@
-package entity;
+package com.buyanova.entity;
 
 public enum CardType {
 

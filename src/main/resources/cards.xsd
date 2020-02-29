@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
+<schema xmlns:tns="http://www.buyash.com/students"
+        xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.buyash.com/students"
-        xmlns:tns="http://www.buyash.com/students"
         elementFormDefault="qualified">
     <element name="oldCards">
         <complexType>
@@ -9,15 +9,16 @@
                 <element name="card"
                          type="tns:card"
                          minOccurs="1"
-                         maxOccurs="unbounded" />
+                         maxOccurs="unbounded"/>
             </sequence>
         </complexType>
     </element>
 
     <complexType name="card">
+
         <sequence>
             <element name="theme" type="string"/>
-            <element name="type" type="string">
+            <element name="type" default="casual">
                 <simpleType>
                     <restriction base="string">
                         <enumeration value="congratulatory"/>
@@ -26,10 +27,11 @@
                     </restriction>
                 </simpleType>
             </element>
-            <element name="wasSent" type="boolean"/>
+
+            <element name="sendingDate" type="dateTime" minOccurs="0"/>
+            <element name="year" type="positiveInteger"/>
             <element name="country" type="string"/>
-            <element name="author" type="string" minOccurs="0"/>
-            <element name="value" type="string">
+            <element name="value">
                 <simpleType>
                     <restriction base="string">
                         <enumeration value="historical"/>
@@ -39,5 +41,13 @@
                 </simpleType>
             </element>
         </sequence>
+        <attribute name="id" type="tns:id" use="required"/>
+        <attribute name="author" type="string" use="optional"/>
     </complexType>
+    <simpleType name="id">
+        <restriction base="ID">
+            <pattern value="([A-Z\d]{4}-){3}[A-Z\d]{4}"/>
+        </restriction>
+    </simpleType>
+
 </schema>

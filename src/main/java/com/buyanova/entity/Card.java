@@ -1,15 +1,18 @@
-package entity;
+package com.buyanova.entity;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Card {
 
+    private String id;
+    private String author;
     private String theme;
     private CardType type;
     private String country;
     private int year;
-    private String author;
     private CardValue value;
+    private Date sendingDate;
 
     public Card() {}
 
@@ -61,6 +64,22 @@ public class Card {
         this.value = value;
     }
 
+    public Date getSendingDate() {
+        return sendingDate;
+    }
+
+    public void setSendingDate(Date sendingDate) {
+        this.sendingDate = sendingDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,18 +95,20 @@ public class Card {
 
     @Override
     public int hashCode() {
-        return Objects.hash(theme, type, country, year, author, value);
+        return id.hashCode();
     }
 
     @Override
     public String toString() {
         return "Card{" +
-                "theme='" + theme + '\'' +
+                "id='" + id + '\'' +
+                ", theme='" + theme + '\'' +
                 ", type=" + type +
                 ", country='" + country + '\'' +
                 ", year=" + year +
                 ", author='" + author + '\'' +
                 ", value=" + value +
+                ", sendingDate=" + sendingDate +
                 '}';
     }
 }
