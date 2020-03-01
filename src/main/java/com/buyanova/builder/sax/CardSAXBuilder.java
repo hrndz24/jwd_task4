@@ -1,5 +1,6 @@
-package com.buyanova.builder;
+package com.buyanova.builder.sax;
 
+import com.buyanova.builder.CardXMLBuilder;
 import com.buyanova.entity.Card;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

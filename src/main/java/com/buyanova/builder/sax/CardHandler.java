@@ -1,5 +1,6 @@
-package com.buyanova.builder;
+package com.buyanova.builder.sax;
 
+import com.buyanova.builder.CardTag;
 import com.buyanova.entity.Card;
 import com.buyanova.entity.CardType;
 import com.buyanova.entity.CardValue;
@@ -11,7 +12,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.bind.DatatypeConverter;
 import java.util.*;
 
-public class CardHandler extends DefaultHandler {
+class CardHandler extends DefaultHandler {
 
     private List<Card> cards;
     private Card current = null;
@@ -19,12 +20,12 @@ public class CardHandler extends DefaultHandler {
     private EnumSet<CardTag> cardTags;
     private static Logger logger = LogManager.getLogger(CardHandler.class);
 
-    public CardHandler() {
+    CardHandler() {
         cards = new ArrayList<>();
         cardTags = EnumSet.range(CardTag.THEME, CardTag.VALUE);
     }
 
-    public List<Card> getCards() {
+    List<Card> getCards() {
         return cards;
     }
 

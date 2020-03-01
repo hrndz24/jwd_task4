@@ -1,5 +1,7 @@
-package com.buyanova.builder;
+package com.buyanova.builder.dom;
 
+import com.buyanova.builder.CardTag;
+import com.buyanova.builder.CardXMLBuilder;
 import com.buyanova.entity.Card;
 import com.buyanova.entity.CardType;
 import com.buyanova.entity.CardValue;
