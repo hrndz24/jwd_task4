@@ -1,4 +1,4 @@
-package com.buyanova.parser;
+package com.buyanova.builder;
 
 import com.buyanova.entity.Card;
 import com.buyanova.entity.CardType;
@@ -18,7 +18,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.*;
 
-public class CardDOMBuilder implements XMLParser{
+public class CardDOMBuilder implements CardXMLBuilder {
     private DocumentBuilder documentBuilder;
     private static Logger logger = LogManager.getLogger(CardDOMBuilder.class);
 
@@ -32,7 +32,7 @@ public class CardDOMBuilder implements XMLParser{
     }
 
     @Override
-    public List<Card> parse(String filePath) {
+    public List<Card> buildCards(String filePath) {
         List<Card> cards = new ArrayList<>();
         Document document;
         try {
@@ -52,7 +52,7 @@ public class CardDOMBuilder implements XMLParser{
 
     private Card buildCard(Element cardElement) {
         Card card = new Card();
-        card.setId(cardElement.getAttribute(Tag.ID.getValue()));
+        card.setId(cardElement.getAttribute(CardTag.ID.getValue()));
         card.setAuthor(cardElement.getAttribute("author"));
         card.setTheme(getElementTextContent(cardElement, "theme"));
         card.setType(CardType.valueOf(getElementTextContent(cardElement, "type").toUpperCase()));

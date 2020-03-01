@@ -1,4 +1,4 @@
-package com.buyanova.parser;
+package com.buyanova.builder;
 
 import com.buyanova.entity.Card;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +12,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.util.List;
 
-public class CardSAXBuilder implements XMLParser {
+public class CardSAXBuilder implements CardXMLBuilder {
 
     private CardHandler cardHandler;
     private XMLReader reader;
@@ -32,7 +32,7 @@ public class CardSAXBuilder implements XMLParser {
     }
 
     @Override
-    public List<Card> parse(String filePath) {
+    public List<Card> buildCards(String filePath) {
         List<Card> cards;
         try {
             reader.parse(filePath);

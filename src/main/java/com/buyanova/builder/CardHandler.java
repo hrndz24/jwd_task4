@@ -1,4 +1,4 @@
-package com.buyanova.parser;
+package com.buyanova.builder;
 
 import com.buyanova.entity.Card;
 import com.buyanova.entity.CardType;
@@ -15,13 +15,13 @@ public class CardHandler extends DefaultHandler {
 
     private List<Card> cards;
     private Card current = null;
-    private Tag currentEnum = null;
-    private EnumSet<Tag> tags;
+    private CardTag currentEnum = null;
+    private EnumSet<CardTag> cardTags;
     private static Logger logger = LogManager.getLogger(CardHandler.class);
 
     public CardHandler() {
         cards = new ArrayList<>();
-        tags = EnumSet.range(Tag.THEME, Tag.VALUE);
+        cardTags = EnumSet.range(CardTag.THEME, CardTag.VALUE);
     }
 
     public List<Card> getCards() {
@@ -30,13 +30,13 @@ public class CardHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
-        if (Tag.CARD.getValue().equals(localName)) {
+        if (CardTag.CARD.getValue().equals(localName)) {
             current = new Card();
             current.setId(attrs.getValue(0));
             current.setAuthor(attrs.getValue(1));
         } else {
-            Tag temp = Tag.getByValue(localName);
-            if (tags.contains(temp)) {
+            CardTag temp = CardTag.getByValue(localName);
+            if (cardTags.contains(temp)) {
                 currentEnum = temp;
             }
         }
@@ -44,7 +44,7 @@ public class CardHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) {
-        if (Tag.CARD.getValue().equals(localName)) {
+        if (CardTag.CARD.getValue().equals(localName)) {
             cards.add(current);
         }
     }

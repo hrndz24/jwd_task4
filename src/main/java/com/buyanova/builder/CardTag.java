@@ -1,6 +1,6 @@
-package com.buyanova.parser;
+package com.buyanova.builder;
 
-public enum Tag {
+public enum CardTag {
     // TODO: 01.03.2020 finish
     OLD_CARDS("oldCards"),
     CARD("card"),
@@ -18,7 +18,7 @@ public enum Tag {
 
     private String value;
 
-    Tag(String value) {
+    CardTag(String value) {
         this.value = value;
     }
 
@@ -26,10 +26,10 @@ public enum Tag {
         return value;
     }
 
-    public static Tag getByValue(String value) {
-        for (Tag tagType : Tag.values()) {
-            if (tagType.value.equals(value)) {
-                return tagType;
+    public static CardTag getByValue(String value) {
+        for (CardTag cardTagType : CardTag.values()) {
+            if (cardTagType.value.equals(value)) {
+                return cardTagType;
             }
         }
         return INVALID_TAG;
