@@ -28,7 +28,7 @@
                 </simpleType>
             </element>
 
-            <element name="sendingDate" type="dateTime" minOccurs="0"/>
+            <element name="sendingDate" type="dateTime"/>
             <element name="year" type="positiveInteger"/>
             <element name="country" type="string"/>
             <element name="value">

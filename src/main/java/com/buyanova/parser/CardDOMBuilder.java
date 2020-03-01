@@ -3,6 +3,8 @@ package com.buyanova.parser;
 import com.buyanova.entity.Card;
 import com.buyanova.entity.CardType;
 import com.buyanova.entity.CardValue;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,49 +16,43 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class DOMBuilder {
-    private Set<Card> cards;
-    private DocumentBuilder docBuilder;
+public class CardDOMBuilder implements XMLParser{
+    private DocumentBuilder documentBuilder;
+    private static Logger logger = LogManager.getLogger(CardDOMBuilder.class);
 
-    public DOMBuilder() {
-        this.cards = new HashSet<Card>();
+    public CardDOMBuilder() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
-            docBuilder = factory.newDocumentBuilder();
+            documentBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            System.err.println("Ошибка конфигурации парсера: " + e);
+            logger.warn(e);
         }
     }
 
-    public Set<Card> getCards() {
-        return cards;
-    }
-
-    public void buildSetCards(String fileName) {
-        Document doc;
+    @Override
+    public List<Card> parse(String filePath) {
+        List<Card> cards = new ArrayList<>();
+        Document document;
         try {
-            doc = docBuilder.parse(fileName);
-            Element root = doc.getDocumentElement();
-            NodeList cards = root.getElementsByTagName("card");
-            for (int i = 0; i < cards.getLength(); i++) {
-                Element cardElement = (Element) cards.item(i);
+            document = documentBuilder.parse(filePath);
+            Element root = document.getDocumentElement();
+            NodeList xmlCards = root.getElementsByTagName("card");
+            for (int i = 0; i < xmlCards.getLength(); i++) {
+                Element cardElement = (Element) xmlCards.item(i);
                 Card card = buildCard(cardElement);
-                this.cards.add(card);
+                cards.add(card);
             }
-        } catch (IOException e) {
-            System.err.println("File error or I/O error: " + e);
-        } catch (SAXException e) {
-            System.err.println("Parsing failure: " + e);
+        } catch (IOException | SAXException e) {
+            logger.warn(e);
         }
+        return cards;
     }
 
     private Card buildCard(Element cardElement) {
         Card card = new Card();
-        card.setId(cardElement.getAttribute("id"));
+        card.setId(cardElement.getAttribute(Tag.ID.getValue()));
         card.setAuthor(cardElement.getAttribute("author"));
         card.setTheme(getElementTextContent(cardElement, "theme"));
         card.setType(CardType.valueOf(getElementTextContent(cardElement, "type").toUpperCase()));
