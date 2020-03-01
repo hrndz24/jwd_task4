@@ -38,7 +38,7 @@ public class CardDOMBuilder implements CardXMLBuilder {
         try {
             document = documentBuilder.parse(filePath);
             Element root = document.getDocumentElement();
-            NodeList xmlCards = root.getElementsByTagName("card");
+            NodeList xmlCards = root.getElementsByTagName(CardTag.CARD.getValue());
             for (int i = 0; i < xmlCards.getLength(); i++) {
                 Element cardElement = (Element) xmlCards.item(i);
                 Card card = buildCard(cardElement);
@@ -53,15 +53,15 @@ public class CardDOMBuilder implements CardXMLBuilder {
     private Card buildCard(Element cardElement) {
         Card card = new Card();
         card.setId(cardElement.getAttribute(CardTag.ID.getValue()));
-        card.setAuthor(cardElement.getAttribute("author"));
-        card.setTheme(getElementTextContent(cardElement, "theme"));
-        card.setType(CardType.valueOf(getElementTextContent(cardElement, "type").toUpperCase()));
-        Date date = DatatypeConverter.parseDateTime(getElementTextContent(cardElement, "sendingDate")).getTime();
+        card.setAuthor(cardElement.getAttribute(CardTag.AUTHOR.getValue()));
+        card.setTheme(getElementTextContent(cardElement, CardTag.THEME.getValue()));
+        card.setType(CardType.valueOf(getElementTextContent(cardElement, CardTag.TYPE.getValue()).toUpperCase()));
+        Date date = DatatypeConverter.parseDateTime(getElementTextContent(cardElement, CardTag.SENDING_DATE.getValue())).getTime();
         card.setSendingDate(date);
-        card.setCountry(getElementTextContent(cardElement, "country"));
-        int year = Integer.parseInt(getElementTextContent(cardElement, "year"));
+        card.setCountry(getElementTextContent(cardElement, CardTag.COUNTRY.getValue()));
+        int year = Integer.parseInt(getElementTextContent(cardElement, CardTag.YEAR.getValue()));
         card.setYear(year);
-        card.setValue(CardValue.valueOf(getElementTextContent(cardElement, "value").toUpperCase()));
+        card.setValue(CardValue.valueOf(getElementTextContent(cardElement, CardTag.VALUE.getValue()).toUpperCase()));
         return card;
     }
 
