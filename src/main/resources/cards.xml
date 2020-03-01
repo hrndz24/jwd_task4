@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<oldCards xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.buyash.com/students cards.xsd"
+          xmlns="http://www.buyash.com/students">
+
+    <card id="AZ7L-AWE5-DF9H-AS34" author="Natik">
+        <theme>Religion</theme>
+        <type>promotional</type>
+        <sendingDate>2019-05-30T09:00:00</sendingDate>
+        <year>2018</year>
+        <country>Russia</country>
+        <value>thematic</value>
+    </card>
+
+    <card id="AZ7L-56GE-DF9H-AS34">
+        <theme>Landscape</theme>
+        <type>congratulatory</type>
+        <sendingDate>2019-04-04T09:00:00</sendingDate>
+        <year>2012</year>
+        <country>Costa Rica</country>
+        <value>collectible</value>
+    </card>
+
+    <card id="AZ74-AWE5-DF9H-AS34" author="Mike Hernandez">
+        <theme>Religion</theme>
+        <type>promotional</type>
+        <sendingDate>2019-05-30T09:00:00</sendingDate>
+        <year>2018</year>
+        <country>Russia</country>
+        <value>thematic</value>
+    </card>
+
+    <card id="AZ7L-AWE5-DF4H-AS34" author="Mike">
+        <theme>Religion</theme>
+        <type>promotional</type>
+        <sendingDate>2019-05-30T09:00:00</sendingDate>
+        <year>2018</year>
+        <country>Russia</country>
+        <value>thematic</value>
+    </card>
+
+    <card id="AZ7L-A3E5-DF9H-AS34" author="Kenneth">
+        <theme>Religion</theme>
+        <type>promotional</type>
+        <sendingDate>2019-05-30T09:00:00</sendingDate>
+        <year>2018</year>
+        <country>Russia</country>
+        <value>thematic</value>
+    </card>
+
+    <card id="AZ7L-ADE5-DF9H-AS34" author="Kenneth Godinez Hidalgo">
+        <theme>Religion</theme>
+        <type>promotional</type>
+        <sendingDate>2019-05-30T09:00:00</sendingDate>
+        <year>2018</year>
+        <country>Russia</country>
+        <value>thematic</value>
+    </card>
+
+    <card id="AZ7L-AWE5-DF9H-DS34" author="Natik">
+        <theme>Religion</theme>
+        <type>promotional</type>
+        <sendingDate>2019-05-30T09:00:00</sendingDate>
+        <year>2018</year>
+        <country>Russia</country>
+        <value>thematic</value>
+    </card>
+
+</oldCards>
