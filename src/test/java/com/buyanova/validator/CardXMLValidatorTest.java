@@ -9,8 +9,9 @@ import java.net.URL;
 public class CardXMLValidatorTest {
 
     private CardXMLValidator cardXMLValidator;
+
     @Before
-    public void init(){
+    public void init() {
         this.cardXMLValidator = new CardXMLValidator();
     }
 

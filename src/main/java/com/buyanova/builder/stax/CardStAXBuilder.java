@@ -21,8 +21,8 @@ import java.util.List;
 
 public class CardStAXBuilder implements CardXMLBuilder {
 
-    private XMLInputFactory inputFactory;
     private static Logger logger = LogManager.getLogger(CardStAXBuilder.class);
+    private XMLInputFactory inputFactory;
 
     public CardStAXBuilder() {
         inputFactory = XMLInputFactory.newInstance();

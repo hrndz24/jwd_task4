@@ -18,11 +18,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class CardDOMBuilder implements CardXMLBuilder {
-    private DocumentBuilder documentBuilder;
     private static Logger logger = LogManager.getLogger(CardDOMBuilder.class);
+    private DocumentBuilder documentBuilder;
 
     public CardDOMBuilder() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -31,6 +33,12 @@ public class CardDOMBuilder implements CardXMLBuilder {
         } catch (ParserConfigurationException e) {
             logger.warn(e);
         }
+    }
+
+    private static String getElementTextContent(Element element, String elementName) {
+        NodeList nList = element.getElementsByTagName(elementName);
+        Node node = nList.item(0);
+        return node.getTextContent();
     }
 
     @Override
@@ -65,12 +73,6 @@ public class CardDOMBuilder implements CardXMLBuilder {
         card.setYear(year);
         card.setValue(CardValue.valueOf(getElementTextContent(cardElement, CardTag.VALUE.getValue()).toUpperCase()));
         return card;
-    }
-
-    private static String getElementTextContent(Element element, String elementName) {
-        NodeList nList = element.getElementsByTagName(elementName);
-        Node node = nList.item(0);
-        return node.getTextContent();
     }
 }
 

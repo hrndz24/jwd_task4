@@ -15,9 +15,9 @@ import java.util.List;
 
 public class CardSAXBuilder implements CardXMLBuilder {
 
+    private static Logger logger = LogManager.getLogger(CardSAXBuilder.class);
     private CardHandler cardHandler;
     private XMLReader reader;
-    private static Logger logger = LogManager.getLogger(CardSAXBuilder.class);
 
     public CardSAXBuilder() {
         cardHandler = new CardHandler();

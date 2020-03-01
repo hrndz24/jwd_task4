@@ -10,15 +10,17 @@ import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.bind.DatatypeConverter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
 
 class CardHandler extends DefaultHandler {
 
+    private static Logger logger = LogManager.getLogger(CardHandler.class);
     private List<Card> cards;
     private Card current = null;
     private CardTag currentEnum = null;
     private EnumSet<CardTag> cardTags;
-    private static Logger logger = LogManager.getLogger(CardHandler.class);
 
     CardHandler() {
         cards = new ArrayList<>();

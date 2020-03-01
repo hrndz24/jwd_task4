@@ -1,7 +1,7 @@
 package com.buyanova.builder;
 
 public enum CardTag {
-    // TODO: 01.03.2020 finish
+
     OLD_CARDS("oldCards"),
     CARD("card"),
     ID("id"),
@@ -14,16 +14,10 @@ public enum CardTag {
     VALUE("value"),
     INVALID_TAG("InvalidTag");
 
-
-
     private String value;
 
     CardTag(String value) {
         this.value = value;
-    }
-
-    public String getValue() {
-        return value;
     }
 
     public static CardTag getByValue(String value) {
@@ -33,5 +27,9 @@ public enum CardTag {
             }
         }
         return INVALID_TAG;
+    }
+
+    public String getValue() {
+        return value;
     }
 }

@@ -14,7 +14,8 @@ public class Card {
     private CardValue value;
     private Date sendingDate;
 
-    public Card() {}
+    public Card() {
+    }
 
     public String getTheme() {
         return theme;
@@ -86,11 +87,13 @@ public class Card {
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
         return year == card.year &&
+                Objects.equals(id, card.id) &&
+                Objects.equals(author, card.author) &&
                 Objects.equals(theme, card.theme) &&
                 type == card.type &&
                 Objects.equals(country, card.country) &&
-                Objects.equals(author, card.author) &&
-                value == card.value;
+                value == card.value &&
+                Objects.equals(sendingDate, card.sendingDate);
     }
 
     @Override
