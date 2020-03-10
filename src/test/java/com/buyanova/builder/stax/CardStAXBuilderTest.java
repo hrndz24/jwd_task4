@@ -31,7 +31,7 @@ public class CardStAXBuilderTest {
     public void buildCards() {
         List<Card> actual = cardStAXBuilder.buildCards(url.getPath());
         List<Card> expected = validCards;
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(expected, actual);
     }
 
     private void buildValidCards() {
@@ -44,7 +44,7 @@ public class CardStAXBuilderTest {
         calendar1.set(Calendar.YEAR, 2019);
         calendar1.set(Calendar.MONTH, 4);
         calendar1.set(Calendar.DAY_OF_MONTH, 30);
-        calendar1.set(Calendar.HOUR, 9);
+        calendar1.set(Calendar.HOUR_OF_DAY, 9);
         calendar1.set(Calendar.MINUTE, 0);
         calendar1.set(Calendar.SECOND, 0);
         calendar1.set(Calendar.MILLISECOND, 0);
@@ -61,7 +61,7 @@ public class CardStAXBuilderTest {
         calendar2.set(Calendar.YEAR, 2019);
         calendar2.set(Calendar.MONTH, 3);
         calendar2.set(Calendar.DAY_OF_MONTH, 4);
-        calendar2.set(Calendar.HOUR, 9);
+        calendar2.set(Calendar.HOUR_OF_DAY, 9);
         calendar2.set(Calendar.MINUTE, 0);
         calendar2.set(Calendar.SECOND, 0);
         calendar2.set(Calendar.MILLISECOND, 0);

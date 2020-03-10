@@ -3,7 +3,7 @@ target/
 *.class
 *.jar
 
-logs
+logs/
 src/main/java/Main.java
 
 # IntelliJ project files
@@ -11,6 +11,7 @@ src/main/java/Main.java
 *.iws
 *.ipr
 .idea/
+out/
 
 # eclipse project file
 .settings/
