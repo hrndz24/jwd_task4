@@ -11,12 +11,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class CardSAXBuilder implements CardXMLBuilder {
 
     private static Logger logger = LogManager.getLogger(CardSAXBuilder.class);
     private CardHandler cardHandler;
+    private SAXParser parser;
     private XMLReader reader;
 
     public CardSAXBuilder() {
@@ -24,19 +26,18 @@ public class CardSAXBuilder implements CardXMLBuilder {
         try {
             SAXParserFactory parserFactory = SAXParserFactory.newInstance();
             parserFactory.setNamespaceAware(true);
-            SAXParser parser = parserFactory.newSAXParser();
-            reader = parser.getXMLReader();
-            reader.setContentHandler(cardHandler);
+            parser = parserFactory.newSAXParser();
+
         } catch (SAXException | ParserConfigurationException e) {
             logger.warn(e);
         }
     }
 
     @Override
-    public List<Card> buildCards(String filePath) {
+    public List<Card> buildCards(InputStream filePath) {
         List<Card> cards;
         try {
-            reader.parse(filePath);
+            parser.parse(filePath, cardHandler);
         } catch (SAXException | IOException e) {
             logger.warn(e);
         }

@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.net.URL;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -16,20 +16,20 @@ public class CardDOMBuilderTest {
 
     private CardDOMBuilder cardDOMBuilder;
     private List<Card> validCards;
-    private URL url;
+    private InputStream inputStream;
 
     @Before
     public void init() {
         this.cardDOMBuilder = new CardDOMBuilder();
         validCards = new ArrayList<>();
         ClassLoader classLoader = getClass().getClassLoader();
-        url = classLoader.getResource("validCards.xml");
+        inputStream = classLoader.getResourceAsStream("validCards.xml");
         buildValidCards();
     }
 
     @Test
     public void buildCards() {
-        List<Card> actual = cardDOMBuilder.buildCards(url.getPath());
+        List<Card> actual = cardDOMBuilder.buildCards(inputStream);
         List<Card> expected = validCards;
         Assert.assertEquals(expected, actual);
     }

@@ -13,9 +13,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +27,10 @@ public class CardStAXBuilder implements CardXMLBuilder {
     }
 
     @Override
-    public List<Card> buildCards(String filePath) {
+    public List<Card> buildCards(InputStream inputStream) {
         List<Card> cards = new ArrayList<>();
         String name;
-        try (FileInputStream inputStream = new FileInputStream(new File(filePath))) {
+        try {
             XMLStreamReader reader = inputFactory.createXMLStreamReader(inputStream);
 
             while (reader.hasNext()) {
@@ -45,7 +43,7 @@ public class CardStAXBuilder implements CardXMLBuilder {
                     }
                 }
             }
-        } catch (XMLStreamException | IOException e) {
+        } catch (XMLStreamException e) {
             logger.warn(e);
         }
         return cards;

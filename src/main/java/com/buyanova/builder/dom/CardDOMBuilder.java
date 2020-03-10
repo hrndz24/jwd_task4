@@ -18,6 +18,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,7 +43,7 @@ public class CardDOMBuilder implements CardXMLBuilder {
     }
 
     @Override
-    public List<Card> buildCards(String filePath) {
+    public List<Card> buildCards(InputStream filePath) {
         List<Card> cards = new ArrayList<>();
         Document document;
         try {
