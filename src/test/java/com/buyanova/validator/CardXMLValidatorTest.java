@@ -1,10 +1,10 @@
 package com.buyanova.validator;
 
-import org.junit.Assert;
+import com.buyanova.exception.XMLValidatorException;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.net.URL;
+import java.io.InputStream;
 
 public class CardXMLValidatorTest {
 
@@ -16,16 +16,16 @@ public class CardXMLValidatorTest {
     }
 
     @Test
-    public void validateCorrectFile() {
+    public void validateCorrectFile() throws XMLValidatorException {
         ClassLoader classLoader = getClass().getClassLoader();
-        URL url = classLoader.getResource("validCards.xml");
-        Assert.assertTrue(cardXMLValidator.validate(url.getPath(), classLoader.getResource("cards.xsd").getPath()));
+        InputStream inputStream = classLoader.getResourceAsStream("validCards.xml");
+        cardXMLValidator.validate(inputStream);
     }
 
-    @Test
-    public void validateIncorrectFile() {
+    @Test(expected = XMLValidatorException.class)
+    public void validateIncorrectFile() throws XMLValidatorException {
         ClassLoader classLoader = getClass().getClassLoader();
-        URL url = classLoader.getResource("invalidCards.xml");
-        Assert.assertFalse(cardXMLValidator.validate(url.getPath(), classLoader.getResource("cards.xsd").getPath()));
+        InputStream inputStream = classLoader.getResourceAsStream("invalidCards.xml");
+        cardXMLValidator.validate(inputStream);
     }
 }

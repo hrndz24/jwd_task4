@@ -8,7 +8,7 @@
         Choose parser
     </h1>
 
-    <form action="/home" method="post" enctype="multipart/form-data">
+    <form action="/controller" method="post" enctype="multipart/form-data">
         <input type="radio" value="sax_parser" name="parser" checked>SAX
         <input type="radio" value="stax_parser" name="parser">StAX
         <input type="radio" value="dom_parser" name="parser">DOM

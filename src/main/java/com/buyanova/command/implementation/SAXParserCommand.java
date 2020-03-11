@@ -2,6 +2,8 @@ package com.buyanova.command.implementation;
 
 import com.buyanova.builder.sax.CardSAXBuilder;
 import com.buyanova.command.Command;
+import com.buyanova.command.JSPParameter;
+import com.buyanova.command.JSPPath;
 import com.buyanova.entity.Card;
 
 import javax.servlet.ServletException;
@@ -15,18 +17,17 @@ import java.util.List;
 public class SAXParserCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        // TODO: 10.03.2020 magic string
 
-        Part filePart = null; // Retrieves <input type="file" name="file">
+        Part filePart;
         try {
-            filePart = request.getPart("file");
+            filePart = request.getPart(JSPParameter.FILE_PARAMETER.getValue());
             InputStream inputStream = filePart.getInputStream();
             List<Card> cards = new CardSAXBuilder().buildCards(inputStream);
-            System.out.println(cards);
-            request.setAttribute("cards", cards);
+            request.setAttribute(JSPParameter.CARDS_ATTRIBUTE.getValue(), cards);
         } catch (IOException | ServletException e) {
-            return "/jsp/error.jsp";
+            request.setAttribute(JSPParameter.ERROR_PARAMETER.getValue(), e.getMessage());
+            return JSPPath.ERROR_PAGE.getValue();
         }
-        return "/jsp/result.jsp";
+        return JSPPath.RESULT_PAGE.getValue();
     }
 }

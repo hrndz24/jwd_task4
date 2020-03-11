@@ -1,4 +1,4 @@
-package com.buyanova;
+package com.buyanova.controller;
 
 import com.buyanova.command.Command;
 import com.buyanova.command.CommandEnum;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/home")
+@WebServlet("/controller")
 @MultipartConfig(maxFileSize = 10240)
 public class Controller extends HttpServlet {
 
@@ -26,7 +26,6 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        // TODO: 10.03.2020 magic string
 
         Command command = CommandEnum.valueOf(request.getParameter("parser").toUpperCase()).getCommand();
         String path = command.execute(request, response);
