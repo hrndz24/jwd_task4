@@ -3,6 +3,15 @@
 <html>
 <head>
     <title>Parsed cards</title>
+    <style>
+        body {
+            background-image: url(../img/backgroumd.jpg);
+        }
+
+        td, th {
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <table>
