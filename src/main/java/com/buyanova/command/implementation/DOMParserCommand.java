@@ -5,13 +5,14 @@ import com.buyanova.command.Command;
 import com.buyanova.command.JSPParameter;
 import com.buyanova.command.JSPPath;
 import com.buyanova.entity.Card;
+import com.buyanova.exception.XMLValidatorException;
+import com.buyanova.validator.CardXMLValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class DOMParserCommand implements Command {
@@ -21,10 +22,11 @@ public class DOMParserCommand implements Command {
         Part filePart;
         try {
             filePart = request.getPart(JSPParameter.FILE_PARAMETER.getValue());
-            InputStream inputStream = filePart.getInputStream();
-            List<Card> cards = new CardDOMBuilder().buildCards(inputStream);
+            CardXMLValidator validator = new CardXMLValidator();
+            validator.validate(filePart.getInputStream());
+            List<Card> cards = new CardDOMBuilder().buildCards(filePart.getInputStream());
             request.setAttribute(JSPParameter.CARDS_ATTRIBUTE.getValue(), cards);
-        } catch (IOException | ServletException e) {
+        } catch (IOException | ServletException | XMLValidatorException e) {
             request.setAttribute(JSPParameter.ERROR_PARAMETER.getValue(), e.getMessage());
             return JSPPath.ERROR_PAGE.getValue();
         }

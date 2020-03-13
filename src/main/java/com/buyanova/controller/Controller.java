@@ -2,6 +2,7 @@ package com.buyanova.controller;
 
 import com.buyanova.command.Command;
 import com.buyanova.command.CommandEnum;
+import com.buyanova.command.JSPParameter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -26,8 +27,7 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-
-        Command command = CommandEnum.valueOf(request.getParameter("parser").toUpperCase()).getCommand();
+        Command command = CommandEnum.valueOf(request.getParameter(JSPParameter.PARSER_PARAMETER.getValue()).toUpperCase()).getCommand();
         String path = command.execute(request, response);
         request.getRequestDispatcher(path).forward(request, response);
     }
