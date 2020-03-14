@@ -1,11 +1,13 @@
-Create an xml-file that stores information about objects of specific subject field.
-For validation there has to be a corresponding xsd-schema.
-The document should be parsed with DOM, SAX and StAX parsers.
+**XML Parser**
+
+The application is made to parse an xml-file that stores information about objects of specific subject field.
+For validation there is a corresponding xsd-schema.
+The document can be parsed with DOM, SAX and StAX parsers.
    
 The file is to be loaded via a web-browser through a web-page with the parser choice.
-Parsing results should be displayed on the web-page as a table. 
+Parsing results are displayed on the web-page as a table. 
 
-Requirements:
+Task requirements:
 * usage of *required* & *optional* for attributes;
 * enumerations;
 * patterns;
@@ -17,7 +19,7 @@ Requirements:
 * for logging use Log4J2;
 * the code should be covered with tests.
 
-The task: ***Post cards***
+The field: ***Post cards***
 
 Attributes:
 * theme;
