@@ -3,10 +3,19 @@
 <html>
 <head>
     <title>Oops</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/mdb.min.css">
+    <style>
+        body {
+            background-image: url(../img/background.jpg);
+        }
+    </style>
 </head>
 <body>
-<h1>
+<div class="container">
+<h1 class="text-white ">
     ${error}
 </h1>
+</div>
 </body>
 </html>

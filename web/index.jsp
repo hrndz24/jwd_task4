@@ -6,13 +6,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Card XML Parser</title>
 
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="css/mdb.min.css">
     <style>
         body {
-            background-image: url(img/backgroumd.jpg);
+            background-image: url(img/background.jpg);
         }
     </style>
 </head>
@@ -21,7 +19,7 @@
 
 <div class="container">
     <h1 class="h1">
-        <p class="text-white">Choose parser</p>
+        <p class="text-white">Choose cards parser</p>
     </h1>
     <form action="${pageContext.request.contextPath}/controller" method="post" enctype="multipart/form-data">
         <input type="radio" value="sax_parser" name="parser" checked>
@@ -41,15 +39,10 @@
 
 </div>
 
-<!-- jQuery -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
 <script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
-
 
 </body>
 </html>

@@ -28,7 +28,7 @@ public class CardXMLValidator {
             Source source = new StreamSource(fileName);
             validator.validate(source);
         } catch (SAXException | IOException e) {
-           throw new XMLValidatorException(e);
+            throw new XMLValidatorException("This xml file does not correspond to the cards xsd schema", e);
         }
     }
 }
