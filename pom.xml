@@ -35,10 +35,10 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <attachClasses>true</attachClasses>
-                    <webXml>web/WEB-INF/web.xml</webXml>
+                    <webXml>src/main/web/WEB-INF/web.xml</webXml>
                     <webResources>
                         <resource>
-                            <directory>web</directory>
+                            <directory>src/main/web</directory>
                             <filtering>true</filtering>
                         </resource>
                     </webResources>
