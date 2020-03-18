@@ -27,7 +27,7 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        Command command = CommandEnum.valueOf(request.getParameter(JSPParameter.PARSER_PARAMETER.getValue()).toUpperCase()).getCommand();
+        Command command = CommandEnum.valueOf(request.getParameter(JSPParameter.COMMAND_PARAMETER.getValue()).toUpperCase()).getCommand();
         String path = command.execute(request, response);
         request.getRequestDispatcher(path).forward(request, response);
     }

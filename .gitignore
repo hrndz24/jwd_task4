@@ -3,8 +3,10 @@ target/
 *.class
 *.jar
 
+# Project specific
 logs/
 src/main/java/Main.java
+*.html
 
 # IntelliJ project files
 *.iml
