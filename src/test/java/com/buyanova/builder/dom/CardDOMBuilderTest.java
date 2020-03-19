@@ -66,7 +66,6 @@ public class CardDOMBuilderTest {
         calendar2.set(Calendar.MINUTE, 0);
         calendar2.set(Calendar.SECOND, 0);
         calendar2.set(Calendar.MILLISECOND, 0);
-
         card2.setSendingDate(calendar2.getTime());
         card2.setYear(2012);
         card2.setCountry("Costa Rica");
