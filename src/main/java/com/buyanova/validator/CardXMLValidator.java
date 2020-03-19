@@ -1,6 +1,5 @@
 package com.buyanova.validator;
 
-import com.buyanova.constants.StringConstant;
 import com.buyanova.exception.XMLValidatorException;
 import org.xml.sax.SAXException;
 
@@ -16,9 +15,11 @@ import java.io.InputStream;
 
 public class CardXMLValidator {
 
+    private static final String CARD_XSD_PATH = "cards.xsd";
+
     public void validate(InputStream fileName) throws XMLValidatorException {
         ClassLoader classLoader = getClass().getClassLoader();
-        String schemaName = classLoader.getResource(StringConstant.CARD_XSD_PATH.getValue()).getPath();
+        String schemaName = classLoader.getResource(CARD_XSD_PATH).getPath();
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);

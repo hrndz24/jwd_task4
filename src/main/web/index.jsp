@@ -19,22 +19,22 @@
 
 <div class="container">
     <h1 class="h1">
-        <p class="text-white">Choose cards parser</p>
+        <p class="text-light">Choose cards parser</p>
     </h1>
     <form action="${pageContext.request.contextPath}/controller" method="post" enctype="multipart/form-data">
         <input type="radio" value="sax_parser" name="parser" checked>
-        <p class="text-white">SAX</p>
+        <p class="text-light">SAX</p>
         <input type="radio" value="stax_parser" name="parser">
-        <p class="text-white">StAX</p>
+        <p class="text-light">StAX</p>
         <input type="radio" value="dom_parser" name="parser">
-        <p class="text-white">DOM</p>
+        <p class="text-light">DOM</p>
         <br/>
         <br/>
         <input class="btn btn-elegant" type="file"
                name="file" accept=".xml">
         <br/>
         <br/>
-        <input class="btn btn-light" type="submit" value="Parse"/>
+        <input class="btn btn-light font-weight-bold" type="submit" value="Parse"/>
     </form>
 
 </div>

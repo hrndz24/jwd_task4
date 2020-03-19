@@ -1,12 +1,12 @@
 package com.buyanova.command.implementation;
 
-import com.buyanova.builder.dom.CardDOMBuilder;
 import com.buyanova.command.Command;
 import com.buyanova.command.JSPParameter;
 import com.buyanova.command.JSPPath;
 import com.buyanova.entity.Card;
-import com.buyanova.exception.XMLValidatorException;
-import com.buyanova.validator.CardXMLValidator;
+import com.buyanova.exception.ServiceException;
+import com.buyanova.service.CardXMLParserService;
+import com.buyanova.service.XMLParserType;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,11 +22,9 @@ public class DOMParserCommand implements Command {
         Part filePart;
         try {
             filePart = request.getPart(JSPParameter.FILE_PARAMETER.getValue());
-            CardXMLValidator validator = new CardXMLValidator();
-            validator.validate(filePart.getInputStream());
-            List<Card> cards = new CardDOMBuilder().buildCards(filePart.getInputStream());
+            List<Card> cards = CardXMLParserService.INSTANCE.parseFileToCards(filePart, XMLParserType.DOM);
             request.setAttribute(JSPParameter.CARDS_ATTRIBUTE.getValue(), cards);
-        } catch (IOException | ServletException | XMLValidatorException e) {
+        } catch (IOException | ServletException | ServiceException e) {
             request.setAttribute(JSPParameter.ERROR_PARAMETER.getValue(), e.getMessage());
             return JSPPath.ERROR_PAGE.getValue();
         }
